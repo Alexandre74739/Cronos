@@ -32,16 +32,57 @@
         list-style: none;
 
         li a {
-            font-family: $font-family-accent;
+            font-family: $font-family-body;
             font-size: $font-size-md;
-            font-weight: 400;
+            font-weight: bold;
             color: $text-white;
             text-decoration: none;
-            letter-spacing: 0.02em;
             transition: $transition;
 
             &:hover {
                 color: darken($text-white, 20%);
+            }
+        }
+    }
+
+    &-right {
+        display: flex;
+        align-items: center;
+
+        .pwa-wrapper {
+            position: relative;
+        }
+
+        .pwa-tooltip {
+            position: absolute;
+            top: calc(100% + $space-3);
+            right: 0;
+            background-color: $bg-color-card;
+            color: $text-white;
+            border: 1px solid $bg-border-color;
+            padding: $space-4;
+            width: 260px;
+            z-index: 200;
+            font-size: $font-size-sm;
+
+            p+p {
+                margin-top: $space-2;
+            }
+        }
+
+        button {
+            font-family: $font-family-accent;
+            font-size: $font-size-md;
+            font-weight: 500;
+            color: $text-grey;
+            background-color: $secondary-color;
+            padding: $space-2 $space-8;
+            cursor: pointer;
+            text-transform: none;
+            transition: $transition;
+
+            &:hover {
+                background-color: darken($secondary-color, 20%);
             }
         }
     }
