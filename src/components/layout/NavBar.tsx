@@ -5,20 +5,24 @@ import PWAInstallButton from './PWAInstallButton'
 
 export default function Navbar() {
     return (
-        <div>
-            <nav>
-                <div>
-                    <Image src={Logo} alt="logo" />
-                    <ul className="nav-item">
+        <header className="navbar">
+            <div className="navbar-left">
+                <Link href="/" className="navbar-logo">
+                    <Image src={Logo} alt="ARTE" height={48} />
+                </Link>
+                <nav>
+                    <ul className="navbar-nav">
                         <li><Link href="/">Antiquité</Link></li>
-                        <li><Link href="/about">Moyen Age</Link></li>
-                        <li><Link href="/contact">Renaissance</Link></li>
-                        <li><Link href="/contact">Rév Industrielle</Link></li>
-                        <li><Link href="/contact">Epoque Moderne</Link></li>
+                        <li><Link href="/moyen-age">Moyen Âge</Link></li>
+                        <li><Link href="/renaissance">Renaissance</Link></li>
+                        <li><Link href="/rev-industrielle">Rév. Industrielle</Link></li>
+                        <li><Link href="/epoque-moderne">Époque Moderne</Link></li>
                     </ul>
-                </div>
+                </nav>
+            </div>
+            <div className="navbar-right">
                 <PWAInstallButton />
-            </nav>
-        </div>
+            </div>
+        </header>
     );
 }

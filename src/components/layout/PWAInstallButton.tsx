@@ -53,40 +53,18 @@ export default function PWAInstallButton() {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="pwa-wrapper">
       <button onClick={handleInstallClick}>Télécharger l&apos;App</button>
 
       {showIOSInstructions && isIOS && (
-        <div style={{
-          position: 'absolute',
-          top: '100%',
-          right: 0,
-          background: 'white',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
-          padding: '12px',
-          width: '260px',
-          zIndex: 100,
-          fontSize: '14px',
-        }}>
+        <div className="pwa-tooltip">
           <p>Pour installer l&apos;app sur iOS :</p>
           <p>Appuyez sur le bouton Partager <span role="img" aria-label="share">⎋</span> puis &quot;Sur l&apos;écran d&apos;accueil&quot; <span role="img" aria-label="add">➕</span></p>
         </div>
       )}
 
       {showFallback && !installPrompt && !isIOS && (
-        <div style={{
-          position: 'absolute',
-          top: '100%',
-          right: 0,
-          background: 'white',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
-          padding: '12px',
-          width: '260px',
-          zIndex: 100,
-          fontSize: '14px',
-        }}>
+        <div className="pwa-tooltip">
           <p>L&apos;installation automatique n&apos;est pas supportée sur ce navigateur.</p>
         </div>
       )}
