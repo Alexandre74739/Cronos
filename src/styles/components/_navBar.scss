@@ -4,9 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 56px;
+    height: 64px;
     padding: 0 $space-6;
     background-color: $bg-color;
+    border-bottom: 1px solid $bg-border-color;
     position: fixed;
     top: 4px;
     left: 0;
@@ -26,28 +27,39 @@
     }
 
     &-nav {
-        display: flex;
-        align-items: center;
-        gap: $space-6;
-        list-style: none;
+        @media (max-width: $bp-lg) {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: $space-6;
+        }
 
         li a {
-            font-family: $font-family-body;
-            font-size: $font-size-md;
-            font-weight: bold;
+            font-family: $font-family-accent;
+            font-size: $font-size-base;
+            font-weight: 600;
             color: $text-white;
-            text-decoration: none;
             transition: $transition;
 
             &:hover {
-                color: darken($text-white, 20%);
+                color: darken($text-white, 30%);
             }
         }
     }
 
-    &-right {
+    &-actions {
         display: flex;
         align-items: center;
+        gap: $space-4;
+    }
+
+    &-pwa {
+        @media (max-width: $bp-lg) {
+            display: none;
+        }
 
         .pwa-wrapper {
             position: relative;
@@ -72,17 +84,109 @@
 
         button {
             font-family: $font-family-accent;
-            font-size: $font-size-md;
-            font-weight: 500;
+            font-size: $font-size-base;
+            font-weight: 600;
             color: $text-grey;
             background-color: $secondary-color;
-            padding: $space-2 $space-8;
+            padding: $space-2 $space-6;
+            border: none;
             cursor: pointer;
-            text-transform: none;
             transition: $transition;
 
             &:hover {
-                background-color: darken($secondary-color, 20%);
+                background-color: darken($text-white, 30%);
+            }
+        }
+    }
+
+    &-burger {
+        display: none;
+
+        @media (max-width: $bp-lg) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+
+        span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: $text-white;
+            border-radius: 1px;
+            transform-origin: center;
+        }
+
+        &.is-open {
+            span:nth-child(1) {
+                transform: translateY(6.5px) rotate(45deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            span:nth-child(3) {
+                transform: translateY(-6.5px) rotate(-45deg);
+            }
+        }
+    }
+
+    &-panel {
+        display: none;
+
+        @media (max-width: $bp-lg) {
+            display: block;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background-color: $bg-color;
+            border-top: 2px solid $secondary-color;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+
+            &.is-open {
+                max-height: 480px;
+            }
+        }
+
+        li {
+            border-bottom: 1px solid $bg-border-color;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                padding: $space-4 $space-6;
+                font-family: $font-family-accent;
+                font-size: $font-size-lg;
+                font-weight: bold;
+                color: $text-white;
+                text-decoration: none;
+                border-left: 3px solid transparent;
+                transition: $transition;
+
+                &:hover {
+                    color: darken($text-white, 30%);
+                    ;
+                    border-left-color: darken($text-white, 30%);
+                    ;
+                    padding-left: calc($space-6 + $space-2);
+                }
             }
         }
     }
