@@ -7,7 +7,7 @@ import Link from "next/link";
 import PWAInstallButton from "./PWAInstallButton";
 
 const links = [
-  { href: "/frise", label: "Frise" },
+  { href: "/", label: "Frise" },
   { href: "/periodes", label: "Périodes" },
   { href: "/figures", label: "Figures" },
   { href: "/sources", label: "Sources" },
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <PWAInstallButton />
 
-        <button className="font-ui text-xs font-semibold text-white border border-white px-6 py-2.5 transition-all duration-200 hover:bg-white hover:text-bg">
+        <button className="font-ui text-xs font-bold text-white border border-white rounded-sm px-6 py-2.5 transition-all duration-300 hover:bg-white/10">
           Créer un compte
         </button>
       </div>

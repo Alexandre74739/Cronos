@@ -49,7 +49,7 @@ export default function PWAInstallButton() {
     <div className="relative">
       <button
         onClick={handleInstallClick}
-        className="font-ui text-sm font-semibold text-border bg-secondary px-6 py-2 border-0 transition-all duration-200 hover:bg-[#b3b3b3]"
+        className="font-ui text-sm font-bold text-border bg-secondary px-6 py-2 rounded-sm transition-all duration-300 hover:bg-gray-300"
       >
         Télécharger l&apos;App
       </button>
@@ -58,19 +58,26 @@ export default function PWAInstallButton() {
         <div className={tooltip}>
           <p>Pour installer l&apos;app sur iOS :</p>
           <p className="mt-2">
-            Appuyez sur Partager{' '}
-            <span role="img" aria-label="share">⎋</span>{' '}
-            puis &quot;Sur l&apos;écran d&apos;accueil&quot;{' '}
-            <span role="img" aria-label="add">➕</span>
+            Appuyez sur Partager{" "}
+            <span role="img" aria-label="share">
+              ⎋
+            </span>{" "}
+            puis &quot;Sur l&apos;écran d&apos;accueil&quot;{" "}
+            <span role="img" aria-label="add">
+              ➕
+            </span>
           </p>
         </div>
       )}
 
       {showFallback && !installPrompt && !isIOS && (
         <div className={tooltip}>
-          <p>L&apos;installation automatique n&apos;est pas supportée sur ce navigateur.</p>
+          <p>
+            L&apos;installation automatique n&apos;est pas supportée sur ce
+            navigateur.
+          </p>
         </div>
       )}
     </div>
-  )
+  );
 }

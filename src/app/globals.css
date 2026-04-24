@@ -17,8 +17,8 @@
   body {
     padding-top: 64px; /* compense la navbar fixe (height: 64px) */
     font-family: Arial, sans-serif;
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   h1,
@@ -35,8 +35,6 @@
   h1 { font-size: clamp(4rem, 6vw, 2.5rem); }
   h2 { font-size: clamp(2rem, 5vw, 2.5rem); }
   h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
-
-  a:hover { color: #FA481C; }
 
   button { cursor: pointer; }
 }

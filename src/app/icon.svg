@@ -1,0 +1,17 @@
+<svg width="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo Cronos — ARTE</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo ARTE avec le nom Cronos en dessous, fond orange vif, lettres blanches en gras arrondi</desc>
+
+  
+
+  <rect x="40" y="40" width="600" height="600" rx="72" fill="#FF3300" style="fill:rgb(255, 51, 0);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- arte -->
+  <text x="340" y="350" text-anchor="middle" dominant-baseline="auto" font-size="210" letter-spacing="-4" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Nunito&quot;, &quot;Arial Rounded MT Bold&quot;, &quot;Helvetica Rounded&quot;, sans-serif;font-size:210px;font-weight:900;text-anchor:middle;dominant-baseline:auto">arte</text>
+
+  <!-- Séparateur -->
+  <rect x="200" y="395" width="280" height="4" rx="2" fill="rgba(255,255,255,0.45)" style="fill:rgba(255, 255, 255, 0.45);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- cronos -->
+  <text x="340" y="490" text-anchor="middle" dominant-baseline="auto" font-size="88" letter-spacing="18" fill="rgba(255,255,255,0.92)" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Nunito&quot;, &quot;Arial Rounded MT Bold&quot;, &quot;Helvetica Rounded&quot;, sans-serif;font-size:88px;font-weight:900;text-anchor:middle;dominant-baseline:auto">CRONOS</text>
+</svg>
