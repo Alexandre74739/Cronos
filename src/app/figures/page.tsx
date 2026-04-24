@@ -1,0 +1,15 @@
+import Hero from "@/src/components/sections/Hero";
+import Img from "@/src/app/assets/la-liberte-guidant-le-peuple.png";
+
+export default function Figures() {
+  return (
+    <main>
+      <Hero
+        imageSrc={Img}
+        badgeContent="Plateforme éducative · 9-18 ans"
+        title={"Les acteurs \n du changement"}
+        description="Penseurs, guerriers ou visionnaires : explorez la vie de ceux qui ont redéfini le monde. Découvrez comment leurs actions ont déclenché des révolutions, inspiré des mouvements et laissé une empreinte indélébile sur l'histoire."
+      />
+    </main>
+  );
+}
