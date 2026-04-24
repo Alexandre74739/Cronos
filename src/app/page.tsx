@@ -13,7 +13,7 @@ export default async function Home() {
     <main>
       <Hero
         imageSrc={Img}
-        badgeContent="Plateforme éducative 9-18 ans"
+        badgeContent="Plongez dans l'Histoire"
         title={"L'Histoire \n par ses causes"}
         description="Plongez dans l'histoire à travers les époques. Explorez les événements
           clés, les personnages marquants et les mouvements qui ont façonné

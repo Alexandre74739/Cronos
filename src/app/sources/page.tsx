@@ -6,7 +6,7 @@ export default function Figures() {
     <main>
       <Hero
         imageSrc={Img}
-        badgeContent="Plateforme éducative · 9-18 ans"
+        badgeContent="Devenez détective de l'Histoire"
         title={"Au cœur \n des archives"}
         description="Analysez les manuscrits, les objets et les œuvres d'art. Apprenez à décrypter le passé à travers ses traces les plus authentiques. Explorez, questionnez, découvrez : les archives n'auront plus de secrets pour vous."
         primaryHref="/"

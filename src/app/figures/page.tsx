@@ -6,7 +6,7 @@ export default function Figures() {
     <main>
       <Hero
         imageSrc={Img}
-        badgeContent="Plateforme éducative · 9-18 ans"
+        badgeContent="Rencontrez les bâtisseurs du monde"
         title={"Les acteurs \n du changement"}
         description="Penseurs, guerriers ou visionnaires : explorez la vie de ceux qui ont redéfini le monde. Découvrez comment leurs actions ont déclenché des révolutions, inspiré des mouvements et laissé une empreinte indélébile sur l'histoire."
         primaryHref="/"
