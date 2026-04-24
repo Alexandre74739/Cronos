@@ -46,9 +46,9 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
         <div className="mt-12 px-4 sm:px-8 md:px-12 lg:px-20">
           <div className="flex items-center justify-between mb-6">
             <h2 className="gap-3">Événements clés : <span className=" text-primary">{activeEpoch.label}</span></h2>
-            <a href="#" className="text-white/50 hover:text-white transition-colors hidden sm:block">
+            <Link href={`/${activeEpoch.slug}`} className="text-white/50 hover:text-white transition-colors hidden sm:block">
               Voir tous les événements →
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
