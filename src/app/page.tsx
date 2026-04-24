@@ -1,5 +1,6 @@
 import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/radeau-de-la-meduse.png";
+import HistoryBtns from "@/src/components/layout/HistoryBtns";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         secondaryHref="/"
         secondaryContent="+ Créer mon parcours"
       />
+      <HistoryBtns />
     </main>
   );
 }

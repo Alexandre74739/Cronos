@@ -43,6 +43,13 @@ export default function Hero({
         }}
       />
 
+      <div
+        className="absolute inset-x-0 bottom-0 h-40"
+        style={{
+          background: "linear-gradient(to top, #151515 0%, transparent 100%)",
+        }}
+      />
+
       <div className="relative z-10 flex flex-col gap-6 max-w-xl">
         <Badge content={badgeContent} />
 
