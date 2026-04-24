@@ -13,7 +13,7 @@ export default async function EpochPage(props: PageProps<"/[epochSlug]">) {
 
   return (
     <main>
-      
+      {/* à construire */}
     </main>
   );
 }

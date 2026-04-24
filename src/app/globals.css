@@ -38,3 +38,18 @@
 
   button { cursor: pointer; }
 }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeSlideUp 0.55s ease-out both;
+}
+.delay-1 { animation-delay: 120ms; }
+.delay-2 { animation-delay: 240ms; }
+.delay-3 { animation-delay: 360ms; }
+.delay-4 { animation-delay: 480ms; }
+.delay-5 { animation-delay: 600ms; }
+.delay-6 { animation-delay: 720ms; }
