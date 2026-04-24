@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import Button from "@/src/components/ui/Button";
 
@@ -52,7 +53,7 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {activeEpoch.events.map((event) => (
-              <div key={event.slug} className="group flex flex-col overflow-hidden rounded-sm cursor-pointer">
+              <Link href={`/${activeEpoch.slug}/${event.slug}`} key={event.slug} className="group flex flex-col overflow-hidden rounded-sm cursor-pointer">
                 <div
                   className="relative flex items-center justify-center h-36"
                   style={{ background: "linear-gradient(135deg, #2d1a08 0%, #1a0f04 60%, #0d0804 100%)" }}
@@ -74,7 +75,7 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
                     Explorer →
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
