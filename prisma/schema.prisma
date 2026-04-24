@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Epoch {
+  id     Int     @id @default(autoincrement())
+  slug   String  @unique
+  label  String
+  events Event[]
+}
+
+model Event {
+  id          Int    @id @default(autoincrement())
+  slug        String @unique
+  year        Int
+  title       String
+  description String
+  epochId     Int
+  epoch       Epoch  @relation(fields: [epochId], references: [id])
+}

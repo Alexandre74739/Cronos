@@ -1,8 +1,14 @@
 import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/radeau-de-la-meduse.png";
 import HistoryBtns from "@/src/components/layout/HistoryBtns";
+import { prisma } from "@/src/lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const epochs = await prisma.epoch.findMany({
+    include: { events: { take: 4, orderBy: { year: "asc" } } },
+    orderBy: { id: "asc" },
+  });
+
   return (
     <main>
       <Hero
@@ -11,14 +17,14 @@ export default function Home() {
         title={"L'Histoire \n par ses causes"}
         description="Plongez dans l'histoire à travers les époques. Explorez les événements
           clés, les personnages marquants et les mouvements qui ont façonné
-          notre monde. Découvrez commentl'histoire continue de résonner
+          notre monde. Découvrez comment l'histoire continue de résonner
           aujourd'hui."
         primaryHref="/"
         primaryContent="▶ Commencer l'exploration"
         secondaryHref="/"
         secondaryContent="+ Créer mon parcours"
       />
-      <HistoryBtns />
+      <HistoryBtns epochs={epochs} />
     </main>
   );
 }

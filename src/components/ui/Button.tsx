@@ -18,7 +18,7 @@ export default function Button({ content, href, style, active, onClick }: Button
       : style === "secondary"
         ? "bg-transparent text-white border border-white hover:bg-white/10"
         : active
-          ? "bg-orange-700 text-white text-sm"
+          ? "bg-primary text-white text-sm"
           :  "bg-white/20 text-white text-sm hover:bg-white hover:text-gray-900";
 
   if (onClick) {
