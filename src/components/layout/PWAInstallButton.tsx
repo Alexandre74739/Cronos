@@ -10,16 +10,12 @@ interface BeforeInstallPromptEvent extends Event {
 export default function PWAInstallButton() {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [isIOS, setIsIOS] = useState(false)
-  const [isStandalone, setIsStandalone] = useState(false)
   const [showIOSInstructions, setShowIOSInstructions] = useState(false)
   const [showFallback, setShowFallback] = useState(false)
 
   useEffect(() => {
     const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
-    const isAlreadyInstalled = window.matchMedia('(display-mode: standalone)').matches
-
     setIsIOS(isIOSDevice)
-    setIsStandalone(isAlreadyInstalled)
 
     const handler = (e: Event) => {
       e.preventDefault()
@@ -29,10 +25,7 @@ export default function PWAInstallButton() {
     window.addEventListener('beforeinstallprompt', handler)
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js', {
-        scope: '/',
-        updateViaCache: 'none',
-      })
+      navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
     }
 
     return () => window.removeEventListener('beforeinstallprompt', handler)
@@ -42,9 +35,7 @@ export default function PWAInstallButton() {
     if (installPrompt) {
       await installPrompt.prompt()
       const { outcome } = await installPrompt.userChoice
-      if (outcome === 'accepted') {
-        setInstallPrompt(null)
-      }
+      if (outcome === 'accepted') setInstallPrompt(null)
     } else if (isIOS) {
       setShowIOSInstructions((prev) => !prev)
     } else {
@@ -52,19 +43,31 @@ export default function PWAInstallButton() {
     }
   }
 
+  const tooltip = "absolute top-[calc(100%+0.75rem)] right-0 bg-card text-white border border-border p-4 w-65 z-200 text-sm"
+
   return (
-    <div className="pwa-wrapper">
-      <button onClick={handleInstallClick}>Télécharger l&apos;App</button>
+    <div className="relative">
+      <button
+        onClick={handleInstallClick}
+        className="font-ui text-sm font-semibold text-border bg-secondary px-6 py-2 border-0 transition-all duration-200 hover:bg-[#b3b3b3]"
+      >
+        Télécharger l&apos;App
+      </button>
 
       {showIOSInstructions && isIOS && (
-        <div className="pwa-tooltip">
+        <div className={tooltip}>
           <p>Pour installer l&apos;app sur iOS :</p>
-          <p>Appuyez sur le bouton Partager <span role="img" aria-label="share">⎋</span> puis &quot;Sur l&apos;écran d&apos;accueil&quot; <span role="img" aria-label="add">➕</span></p>
+          <p className="mt-2">
+            Appuyez sur Partager{' '}
+            <span role="img" aria-label="share">⎋</span>{' '}
+            puis &quot;Sur l&apos;écran d&apos;accueil&quot;{' '}
+            <span role="img" aria-label="add">➕</span>
+          </p>
         </div>
       )}
 
       {showFallback && !installPrompt && !isIOS && (
-        <div className="pwa-tooltip">
+        <div className={tooltip}>
           <p>L&apos;installation automatique n&apos;est pas supportée sur ce navigateur.</p>
         </div>
       )}

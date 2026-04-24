@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+@theme {
+  /* Couleurs */
+  --color-primary: #FA481C;
+  --color-secondary: #F2F2F2;
+  --color-bg: #151515;
+  --color-card: #1a1a1a;
+  --color-border: #333333;
+
+  /* Typographies — référence les variables CSS injectées par next/font */
+  --font-heading: var(--font-title);
+  --font-ui: var(--font-accent);
+}
+
+@layer base {
+  body {
+    padding-top: 64px; /* compense la navbar fixe (height: 64px) */
+    font-family: Arial, sans-serif;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h1 { font-size: clamp(4rem, 6vw, 2.5rem); }
+  h2 { font-size: clamp(2rem, 5vw, 2.5rem); }
+  h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+
+  a:hover { color: #FA481C; }
+
+  button { cursor: pointer; }
+}

@@ -1,9 +1,0 @@
-// Abstracts — re-exposés pour les fichiers composants
-@forward './abstracts/variables';
-@forward './abstracts/mixins';
-
-// Base — styles globaux (body, :root, thème)
-@use './base/global';
-
-// Composants
-@use './components/navBar';
