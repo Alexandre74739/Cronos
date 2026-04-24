@@ -7,6 +7,10 @@ interface HeroProps {
   badgeContent: string;
   title: string;
   description: string;
+  primaryHref: string;
+  primaryContent: string;
+  secondaryHref: string;
+  secondaryContent: string;
 }
 
 export default function Hero({
@@ -14,6 +18,10 @@ export default function Hero({
   badgeContent,
   title,
   description,
+  primaryHref,
+  primaryContent,
+  secondaryHref,
+  secondaryContent,
 }: HeroProps) {
   return (
     <section className="relative flex flex-col justify-center min-h-[calc(100vh-64px)] px-12 md:px-20 overflow-hidden bg-[#151515]">
@@ -47,8 +55,8 @@ export default function Hero({
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2">
-          <Button content="▶ Commencer l'exploration" style="primary" />
-          <Button content="+ Créer mon parcours" style="secondary" />
+          <Button content={primaryContent} href={primaryHref} style="primary" />
+          <Button content={secondaryContent} href={secondaryHref} style="secondary" />
         </div>
       </div>
     </section>

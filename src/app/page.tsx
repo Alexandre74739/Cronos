@@ -12,6 +12,10 @@ export default function Home() {
           clés, les personnages marquants et les mouvements qui ont façonné
           notre monde. Découvrez commentl'histoire continue de résonner
           aujourd'hui."
+        primaryHref="/"
+        primaryContent="▶ Commencer l'exploration"
+        secondaryHref="/"
+        secondaryContent="+ Créer mon parcours"
       />
     </main>
   );

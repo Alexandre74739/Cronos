@@ -9,6 +9,10 @@ export default function Figures() {
         badgeContent="Plateforme éducative · 9-18 ans"
         title={"Les acteurs \n du changement"}
         description="Penseurs, guerriers ou visionnaires : explorez la vie de ceux qui ont redéfini le monde. Découvrez comment leurs actions ont déclenché des révolutions, inspiré des mouvements et laissé une empreinte indélébile sur l'histoire."
+        primaryHref="/"
+        primaryContent="▶ Commencer l'exploration"
+        secondaryHref="/"
+        secondaryContent="+ Créer mon parcours"
       />
     </main>
   );
