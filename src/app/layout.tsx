@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, DM_Sans } from "next/font/google";
-import Link from 'next/link'
 import "./globals.css";
 import "../styles/main.scss";
+import Navbar from "@/src/components/layout/NavBar";
 
 const montserrat = Montserrat({
   variable: "--font-title",
@@ -31,7 +31,10 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+          <Navbar />
+          {children}
+        </body>
     </html>
   );
 }
