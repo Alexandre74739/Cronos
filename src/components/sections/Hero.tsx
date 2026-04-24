@@ -1,14 +1,25 @@
-import Image from "next/image";
-import radeauImg from "@/src/app/assets/radeau-de-la-meduse.png";
+import Image, { StaticImageData } from "next/image";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 
-export default function Hero() {
+interface HeroProps {
+  imageSrc: StaticImageData | string;
+  badgeContent: string;
+  title: string;
+  description: string;
+}
+
+export default function Hero({
+  imageSrc,
+  badgeContent,
+  title,
+  description,
+}: HeroProps) {
   return (
-    <section className="relative flex flex-col justify-center min-h-[calc(100vh-64px)] px-12 md:px-20 overflow-hidden bg-151515">
+    <section className="relative flex flex-col justify-center min-h-[calc(100vh-64px)] px-12 md:px-20 overflow-hidden bg-[#151515]">
       <div className="absolute inset-0">
         <Image
-          src={radeauImg}
+          src={imageSrc}
           alt=""
           fill
           className="object-cover object-center opacity-60"
@@ -25,19 +36,14 @@ export default function Hero() {
       />
 
       <div className="relative z-10 flex flex-col gap-6 max-w-xl">
-        <Badge content="Plateforme éducative · 9-18 ans" />
+        <Badge content={badgeContent} />
 
-        <h1 className="font-bold leading-[1.05] tracking-tight">
-          L'histoire
-          <br />
-          par ses causes
+        <h1 className="font-bold leading-[1.05] tracking-tight whitespace-pre-line">
+          {title}
         </h1>
 
         <p className="text-white/60 max-w-base leading-relaxed">
-          Plongez dans l'histoire à travers les époques. Explorez les événements
-          clés, les personnages marquants et les mouvements qui ont façonné
-          notre monde. Découvrez commentl'histoire continue de résonner
-          aujourd'hui.
+          {description}
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2">
