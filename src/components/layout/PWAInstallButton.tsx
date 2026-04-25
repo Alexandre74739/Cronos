@@ -1,5 +1,6 @@
 'use client'
 
+import { Download } from "@deemlol/next-icons";
 import { useState, useEffect } from 'react'
 
 interface BeforeInstallPromptEvent extends Event {
@@ -51,18 +52,19 @@ export default function PWAInstallButton() {
         onClick={handleInstallClick}
         className="font-ui text-sm font-bold text-border bg-secondary px-6 py-2 rounded-sm transition-all duration-300 hover:bg-gray-300"
       >
-        Télécharger l&apos;App
+        Télécharger l'App{" "}
+        <Download className="inline-block ml-2 size-4 text-black" />
       </button>
 
       {showIOSInstructions && isIOS && (
         <div className={tooltip}>
-          <p>Pour installer l&apos;app sur iOS :</p>
+          <p>Pour installer l'app sur iOS :</p>
           <p className="mt-2">
             Appuyez sur Partager{" "}
             <span role="img" aria-label="share">
               ⎋
             </span>{" "}
-            puis &quot;Sur l&apos;écran d&apos;accueil&quot;{" "}
+            puis &quot;Sur l'écran d'accueil&quot;{" "}
             <span role="img" aria-label="add">
               ➕
             </span>
@@ -73,8 +75,7 @@ export default function PWAInstallButton() {
       {showFallback && !installPrompt && !isIOS && (
         <div className={tooltip}>
           <p>
-            L&apos;installation automatique n&apos;est pas supportée sur ce
-            navigateur.
+            L'installation automatique n'est pas supportée sur ce navigateur.
           </p>
         </div>
       )}
