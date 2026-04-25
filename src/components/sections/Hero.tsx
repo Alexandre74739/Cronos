@@ -3,14 +3,14 @@ import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 
 interface HeroProps {
-  imageSrc: StaticImageData | string;
+  imageSrc?: StaticImageData | string;
   badgeContent: string;
   title: string;
-  description: string;
-  primaryHref: string;
-  primaryContent: string;
-  secondaryHref: string;
-  secondaryContent: string;
+  description?: string;
+  primaryHref?: string;
+  primaryContent?: string;
+  secondaryHref?: string;
+  secondaryContent?: string;
 }
 
 export default function Hero({
@@ -25,21 +25,24 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section className="relative flex flex-col justify-center min-h-[calc(100vh-64px)] px-12 md:px-20 overflow-hidden bg-[#151515]">
-      <div className="absolute inset-0">
-        <Image
-          src={imageSrc}
-          alt=""
-          fill
-          className="object-cover object-center opacity-60"
-          priority
-        />
-      </div>
+      {imageSrc && (
+        <div className="absolute inset-0">
+          <Image
+            src={imageSrc}
+            alt=""
+            fill
+            className="object-cover object-center opacity-60"
+            priority
+          />
+        </div>
+      )}
 
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(to right, #151515 35%, #15151599 60%, transparent 100%)",
+          background: imageSrc
+            ? "linear-gradient(to right, #151515 35%, #15151599 60%, transparent 100%)"
+            : "radial-gradient(ellipse at 15% 55%, rgba(90,45,8,0.45) 0%, transparent 65%)",
         }}
       />
 
@@ -57,14 +60,20 @@ export default function Hero({
           {title}
         </h1>
 
-        <p className="text-white/60 max-w-base leading-relaxed">
-          {description}
-        </p>
+        {description && (
+          <p className="text-white/60 max-w-base leading-relaxed">
+            {description}
+          </p>
+        )}
 
-        <div className="flex flex-wrap gap-4 pt-2">
-          <Button content={primaryContent} href={primaryHref} style="primary" />
-          <Button content={secondaryContent} href={secondaryHref} style="secondary" />
-        </div>
+        {primaryHref && primaryContent && (
+          <div className="flex flex-wrap gap-4 pt-2">
+            <Button content={primaryContent} href={primaryHref} style="primary" />
+            {secondaryHref && secondaryContent && (
+              <Button content={secondaryContent} href={secondaryHref} style="secondary" />
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
