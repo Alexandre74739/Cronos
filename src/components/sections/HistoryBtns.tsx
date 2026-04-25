@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Button from "@/src/components/ui/Button";
 import Card from "@/src/components/ui/Card";
+import { getEpochColor } from "@/src/lib/epochColors";
 
 interface Event {
   slug: string;
@@ -46,9 +47,9 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
       {activeEpoch && (
         <div className="mt-12 px-4 sm:px-8 md:px-12 lg:px-20">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="gap-3">Événements clés : <span className=" text-primary">{activeEpoch.label}</span></h2>
-            <Link href={`/${activeEpoch.slug}`} className="text-white/50 hover:text-white transition-colors hidden sm:block">
-              Voir tous les événements →
+            <h2 className="gap-3">Événements clés : <Link href={`/periodes/${activeEpoch.slug}`} style={{ color: getEpochColor(activeEpoch.slug) }} className="hover:underline">{activeEpoch.label}</Link></h2>
+            <Link href="/periodes" className="text-white/50 hover:text-white transition-colors hidden sm:block">
+              Voir toutes les périodes →
             </Link>
           </div>
 
@@ -56,10 +57,11 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
             {activeEpoch.events.map((event) => (
               <Card
                 key={event.slug}
-                href={`/${activeEpoch.slug}/${event.slug}`}
+                href={`/periodes/${activeEpoch.slug}/${event.slug}`}
                 year={event.year}
                 title={event.title}
                 description={event.description}
+                color={getEpochColor(activeEpoch.slug)}
               />
             ))}
           </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/src/lib/prisma";
 
-export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlug]">) {
+export default async function EventPage(props: PageProps<"/periodes/[epochSlug]/[eventSlug]">) {
   const { epochSlug, eventSlug } = await props.params;
 
   const event = await prisma.event.findUnique({
@@ -19,20 +19,20 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
     include: { epoch: true },
   });
 
-  const fmt = (y: number) => y < 0 ? `${Math.abs(y)} av. J.-C.` : String(y);
+  const fmt = (y: number) => y < 0 ? `${Math.abs(y)} av. JC` : String(y);
   const readingTime = Math.max(1, Math.ceil((event.content ?? "").split(" ").length / 200));
 
   return (
     <main className="bg-bg min-h-screen text-white">
       <section className="px-6 sm:px-12 md:px-20 pt-16 pb-20">
         <nav className="flex items-center gap-2 text-white/40 text-sm mb-12">
-          <Link href="/" className="hover:text-white transition-colors">
-            Accueil
+          <Link href="/periodes" className="hover:text-white transition-colors">
+            Périodes
           </Link>
           <span>/</span>
           <Link
-            href={`/${epochSlug}`}
-            className=" duration-300 hover:text-white transition-colors"
+            href={`/periodes/${epochSlug}`}
+            className="duration-300 hover:text-white transition-colors"
           >
             {event.epoch.label}
           </Link>
@@ -74,7 +74,7 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
           </blockquote>
 
           <Link
-            href={`/${epochSlug}`}
+            href={`/periodes/${epochSlug}`}
             className="self-start text-white/50 duration-300 hover:text-white transition-colors"
           >
             ← Voir tous les événements de {event.epoch.label}
@@ -91,7 +91,7 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
               <p className="text-white/40 text-xs uppercase tracking-wide">
                 Année
               </p>
-              <p className="text-white font-bold text-lg">{fmt(event.year)}</p>
+              <p className=" font-bold text-lg">{fmt(event.year)}</p>
             </div>
 
             <div className="h-px bg-border" />
@@ -101,7 +101,7 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
                 Époque
               </p>
               <Link
-                href={`/${epochSlug}`}
+                href={`/periodes/${epochSlug}`}
                 className="text-primary font-bold hover:underline"
               >
                 {event.epoch.label}
@@ -114,7 +114,7 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
               <p className="text-white/40 text-xs uppercase tracking-wide">
                 Temps de lecture
               </p>
-              <p className="text-white font-bold">{readingTime} min</p>
+              <p className="font-bold">{readingTime} min</p>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default async function EventPage(props: PageProps<"/[epochSlug]/[eventSlu
               {nextEvents.map((next: (typeof nextEvents)[number]) => (
                 <Link
                   key={next.slug}
-                  href={`/${next.epoch.slug}/${next.slug}`}
+                  href={`/periodes/${next.epoch.slug}/${next.slug}`}
                   className="group bg-card rounded-sm p-6 flex flex-col gap-3 hover:bg-white/5 transition-colors"
                 >
                   <div className="flex items-center justify-between">

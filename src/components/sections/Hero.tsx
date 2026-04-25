@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 
 interface HeroProps {
   imageSrc?: StaticImageData | string;
+  tint?: string;
   badgeContent: string;
   title: string;
   description?: string;
@@ -15,6 +16,7 @@ interface HeroProps {
 
 export default function Hero({
   imageSrc,
+  tint,
   badgeContent,
   title,
   description,
@@ -42,7 +44,9 @@ export default function Hero({
         style={{
           background: imageSrc
             ? "linear-gradient(to right, #151515 35%, #15151599 60%, transparent 100%)"
-            : "radial-gradient(ellipse at 15% 55%, rgba(90,45,8,0.45) 0%, transparent 65%)",
+            : tint
+              ? `radial-gradient(ellipse at 15% 55%, ${tint}70 0%, transparent 65%)`
+              : "radial-gradient(ellipse at 15% 55%, rgba(90,45,8,0.45) 0%, transparent 65%)",
         }}
       />
 
