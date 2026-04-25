@@ -52,7 +52,7 @@ export default function PWAInstallButton() {
         onClick={handleInstallClick}
         className="font-ui text-sm font-bold text-border bg-secondary px-6 py-2 rounded-sm transition-all duration-300 hover:bg-gray-300"
       >
-        Télécharger l'App{" "}
+        Télécharger l'App
         <Download className="inline-block ml-2 size-4 text-black" />
       </button>
 

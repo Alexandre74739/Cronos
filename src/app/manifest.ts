@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Arte - Histoire de l\'Art',
-    short_name: 'Arte',
-    description: 'Explorez l\'histoire de l\'art à travers les époques',
+    name: 'Arte Cronos',
+    short_name: 'Arte Cronos',
+    description: 'Explorez l\'histoire à travers les époques',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
