@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Button from "@/src/components/ui/Button";
 import Card from "@/src/components/ui/Card";
 import { getEpochColor } from "@/src/lib/epochColors";
-import SliceIn from "../animations/SliceIn";
+import StaggerItem from "../animations/StaggerItem";
 
 interface Event {
   slug: string;
@@ -73,7 +73,7 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
               exit="exit"
             >
               {activeEpoch.events.map((event) => (
-                <SliceIn key={event.slug}>
+                <StaggerItem key={event.slug}>
                   <Card
                     href={`/periodes/${activeEpoch.slug}/${event.slug}`}
                     year={event.year}
@@ -81,7 +81,7 @@ export default function HistoryBtns({ epochs }: { epochs: Epoch[] }) {
                     description={event.description}
                     color={getEpochColor(activeEpoch.slug)}
                   />
-                </SliceIn>
+                </StaggerItem>
               ))}
             </motion.div>
           </motion.div>

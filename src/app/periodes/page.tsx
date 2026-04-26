@@ -4,6 +4,7 @@ import { prisma } from "@/src/lib/prisma";
 import { getEpochColor } from "@/src/lib/epochColors";
 import { getEpochBoundaries } from "@/src/lib/epochBoundaries";
 import Card from "@/src/components/ui/Card";
+import SliceIn from "@/src/components/animations/SliceIn";
 
 const fmt = (y: number) => {
   if (y <= -1000000) return `${Math.abs(y / 1000000)} million${Math.abs(y / 1000000) > 1 ? "s" : ""} av. JC`;
@@ -33,7 +34,7 @@ export default async function Periodes() {
 
       <section className="px-6 sm:px-12 md:px-20 py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {epochs.map((epoch: typeof epochs[number]) => {
+          {epochs.map((epoch: typeof epochs[number], i: number) => {
             const color = getEpochColor(epoch.slug);
             const bounds = getEpochBoundaries(epoch.slug);
             const yearLabel = bounds
@@ -41,14 +42,16 @@ export default async function Periodes() {
               : "—";
 
             return (
-              <Card
-                key={epoch.slug}
-                href={`/periodes/${epoch.slug}`}
-                year={yearLabel}
-                title={epoch.label}
-                description={`${epoch.events.length} événement${epoch.events.length > 1 ? "s" : ""}`}
-                color={color}
-              />
+              <SliceIn key={epoch.slug} delay={i * 0.1}>
+                <Card
+                  key={epoch.slug}
+                  href={`/periodes/${epoch.slug}`}
+                  year={yearLabel}
+                  title={epoch.label}
+                  description={`${epoch.events.length} événement${epoch.events.length > 1 ? "s" : ""}`}
+                  color={color}
+                />
+              </SliceIn>
             );
           })}
         </div>
