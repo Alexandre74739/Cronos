@@ -1,6 +1,9 @@
+"use client";
+
 import Image, { StaticImageData } from "next/image";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
+import Reveal from "../animations/Reveal";
 
 interface HeroProps {
   imageSrc?: StaticImageData | string;
@@ -58,25 +61,33 @@ export default function Hero({
       />
 
       <div className="relative z-10 flex flex-col gap-6 max-w-xl">
-        <Badge content={badgeContent} />
+        <Reveal delay={0}>
+          <Badge content={badgeContent} />
+        </Reveal>
 
-        <h1 className="font-bold leading-[1.05] tracking-tight whitespace-pre-line">
-          {title}
-        </h1>
+        <Reveal delay={0.1}>
+          <h1 className="font-bold leading-[1.05] tracking-tight whitespace-pre-line">
+            {title}
+          </h1>
+        </Reveal>
 
         {description && (
-          <p className="text-white/60 max-w-base leading-relaxed">
-            {description}
-          </p>
+          <Reveal delay={0.2}>
+            <p className="text-white/60 max-w-base leading-relaxed">
+              {description}
+            </p>
+          </Reveal>
         )}
 
         {primaryHref && primaryContent && (
-          <div className="flex flex-wrap gap-4 pt-2">
-            <Button content={primaryContent} href={primaryHref} style="primary" />
-            {secondaryHref && secondaryContent && (
-              <Button content={secondaryContent} href={secondaryHref} style="secondary" />
-            )}
-          </div>
+          <Reveal delay={0.3}>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button content={primaryContent} href={primaryHref} style="primary" />
+              {secondaryHref && secondaryContent && (
+                <Button content={secondaryContent} href={secondaryHref} style="secondary" />
+              )}
+            </div>
+          </Reveal>
         )}
       </div>
     </section>
