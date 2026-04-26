@@ -21,7 +21,7 @@ export default function Footer() {
     <footer className="bg-card border-t border-border mt-auto">
       <div className="flex flex-col items-center gap-4 px-6 py-12 text-center">
         <p className="font-heading font-bold text-2xl order-1 lg:order-2">
-          Cronos sur tous vos écrans
+          Arte Cronos sur tous vos écrans
         </p>
         <p className="text-white/50 max-w-md order-2 lg:order-3">
           Retrouvez l'application sur votre ordinateur, smartphone ou TV
