@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface CardProps {
     href: string;
-    year: number;
+    year: number | string;
     title: string;
     description: string;
     color?: string;
@@ -10,6 +10,7 @@ interface CardProps {
 
 export default function Card({ href, year, title, description, color = "#FA481C" }: CardProps) {
     const fmt = (y: number) => (y < 0 ? `${Math.abs(y)} av. JC` : String(y));
+    const yearLabel = typeof year === "number" ? fmt(year) : year;
 
     return (
         <Link href={href} className="group flex flex-col overflow-hidden rounded-sm cursor-pointer">
@@ -18,7 +19,7 @@ export default function Card({ href, year, title, description, color = "#FA481C"
                 style={{ background: `linear-gradient(135deg, ${color}22 0%, ${color}0a 60%, #0d0804 100%)` }}
             >
                 <span className="text-xl font-bold tracking-wide" style={{ color }}>
-                    {fmt(year)}
+                    {yearLabel}
                 </span>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300" />
             </div>
