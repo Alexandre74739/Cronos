@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/src/lib/prisma";
 import { getEpochColor } from "@/src/lib/epochColors";
+import { getEpochBoundaries } from "@/src/lib/epochBoundaries";
 import EpochHero from "@/src/components/sections/EpochHero";
 import EventsSection from "./_components/EventsSection";
 
@@ -28,16 +29,15 @@ export default async function EpochPage(props: PageProps<"/periodes/[epochSlug]"
   ]);
 
   const color = getEpochColor(epochSlug);
-  const firstYear = epoch.events.at(0)?.year ?? null;
-  const lastYear = epoch.events.at(-1)?.year ?? null;
+  const bounds = getEpochBoundaries(epochSlug);
 
   return (
     <main className="bg-bg min-h-screen">
       <EpochHero
         label={epoch.label}
         color={color}
-        firstYear={firstYear}
-        lastYear={lastYear}
+        firstYear={bounds?.start ?? null}
+        lastYear={bounds?.end ?? null}
       />
 
       <div className="h-px bg-border mx-6 sm:mx-12 md:mx-20" />

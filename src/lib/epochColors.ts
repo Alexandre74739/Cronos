@@ -1,9 +1,9 @@
 const COLORS: Record<string, string> = {
+  "prehistoire": "#7A9E7E",
   "antiquite": "#C8902A",
   "moyen-age": "#7B4F9E",
-  "renaissance": "#2E8A6E",
-  "revolution-industrielle": "#4A7FA5",
-  "epoque-moderne": "#B03030",
+  "temps-modernes": "#2E8A6E",
+  "epoque-contemporaine": "#B03030",
 };
 
 const FALLBACK = "#FA481C";

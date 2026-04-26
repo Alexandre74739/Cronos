@@ -2,14 +2,18 @@ import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/les-sabines.png";
 import { prisma } from "@/src/lib/prisma";
 import { getEpochColor } from "@/src/lib/epochColors";
+import { getEpochBoundaries } from "@/src/lib/epochBoundaries";
 import Card from "@/src/components/ui/Card";
 
-const fmt = (y: number) => (y < 0 ? `${Math.abs(y)} av. JC` : String(y));
+const fmt = (y: number) => {
+  if (y <= -1000000) return `${Math.abs(y / 1000000)} million${Math.abs(y / 1000000) > 1 ? "s" : ""} av. JC`;
+  return y < 0 ? `${Math.abs(y)} av. JC` : String(y);
+};
 
 export default async function Periodes() {
   const epochs = await prisma.epoch.findMany({
     include: {
-      events: { select: { year: true }, orderBy: { year: "asc" } },
+      events: { select: { year: true } },
     },
     orderBy: { id: "asc" },
   });
@@ -31,10 +35,9 @@ export default async function Periodes() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {epochs.map((epoch: typeof epochs[number]) => {
             const color = getEpochColor(epoch.slug);
-            const firstYear = epoch.events.at(0)?.year ?? null;
-            const lastYear = epoch.events.at(-1)?.year ?? null;
-            const yearLabel = firstYear !== null && lastYear !== null
-              ? `${fmt(firstYear)} → ${fmt(lastYear)}`
+            const bounds = getEpochBoundaries(epoch.slug);
+            const yearLabel = bounds
+              ? `${fmt(bounds.start)} → ${bounds.end !== null ? fmt(bounds.end) : "Aujourd'hui"}`
               : "—";
 
             return (

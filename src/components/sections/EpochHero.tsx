@@ -1,6 +1,9 @@
 import Hero from "./Hero";
 
-const fmt = (y: number) => (y < 0 ? `${Math.abs(y)} av. JC` : String(y));
+const fmt = (y: number) => {
+  if (y <= -1000000) return `${Math.abs(y / 1000000)} million${Math.abs(y / 1000000) > 1 ? "s" : ""} av. JC`;
+  return y < 0 ? `${Math.abs(y)} av. JC` : String(y);
+};
 
 interface EpochHeroProps {
   label: string;
@@ -10,10 +13,10 @@ interface EpochHeroProps {
 }
 
 export default function EpochHero({ label, color, firstYear, lastYear }: EpochHeroProps) {
-  const badge =
-    firstYear !== null && lastYear !== null && firstYear !== lastYear
-      ? `${fmt(firstYear)} - ${fmt(lastYear)}`
-      : label;
+  const endLabel = lastYear !== null ? fmt(lastYear) : "Aujourd'hui";
+  const badge = firstYear !== null
+    ? `${fmt(firstYear)} - ${endLabel}`
+    : label;
 
   return (
     <Hero
