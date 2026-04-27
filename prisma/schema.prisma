@@ -25,6 +25,22 @@ model Event {
   epoch       Epoch  @relation(fields: [epochId], references: [id])
 }
 
+model Figure {
+  id        Int    @id @default(autoincrement())
+  slug      String @unique
+  name      String
+  birthYear Int
+  deathYear Int?
+  role      String
+  origin    String
+  color     String
+  imageUrl  String
+  excerpt   String
+  bioYouth  String
+  bioApogee String
+  bioLegacy String
+}
+
 model Source {
   id          Int    @id @default(autoincrement())
   slug        String @unique
