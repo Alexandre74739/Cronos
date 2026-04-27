@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -22,4 +23,22 @@ model Event {
   content     String
   epochId     Int
   epoch       Epoch  @relation(fields: [epochId], references: [id])
+}
+
+model Source {
+  id          Int    @id @default(autoincrement())
+  slug        String @unique
+  title       String
+  year        Int
+  nature      String
+  author      String
+  origin      String
+  description String
+  imageUrl    String
+  color       String
+  nasdiN      String
+  nasdiA      String
+  nasdiS      String
+  nasdiD      String
+  nasdiI      String
 }

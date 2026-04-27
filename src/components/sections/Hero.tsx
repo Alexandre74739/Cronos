@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
@@ -10,6 +11,8 @@ interface HeroProps {
   tint?: string;
   badgeContent: string;
   title: string;
+  titleClassName?: string;
+  breadcrumb?: React.ReactNode;
   description?: string;
   primaryHref?: string;
   primaryContent?: string;
@@ -22,15 +25,20 @@ export default function Hero({
   tint,
   badgeContent,
   title,
+  titleClassName,
+  breadcrumb,
   description,
   primaryHref,
   primaryContent,
   secondaryHref,
   secondaryContent,
 }: HeroProps) {
+  const [imgError, setImgError] = useState(false);
+  const showImage = imageSrc && !imgError;
+
   return (
     <section className="relative flex flex-col justify-center min-h-[calc(100vh-64px)] px-12 md:px-20 overflow-hidden bg-[#151515]">
-      {imageSrc && (
+      {showImage && (
         <div className="absolute inset-0">
           <Image
             src={imageSrc}
@@ -38,6 +46,8 @@ export default function Hero({
             fill
             className="object-cover object-center opacity-60"
             priority
+            unoptimized={typeof imageSrc === "string"}
+            onError={() => setImgError(true)}
           />
         </div>
       )}
@@ -45,7 +55,7 @@ export default function Hero({
       <div
         className="absolute inset-0"
         style={{
-          background: imageSrc
+          background: showImage
             ? "linear-gradient(to right, #151515 35%, #15151599 60%, transparent 100%)"
             : tint
               ? `radial-gradient(ellipse at 15% 55%, ${tint}70 0%, transparent 65%)`
@@ -61,18 +71,22 @@ export default function Hero({
       />
 
       <div className="relative z-10 flex flex-col gap-6 max-w-xl">
-        <Reveal delay={0}>
+        {breadcrumb && <Reveal delay={0}>{breadcrumb}</Reveal>}
+
+        <Reveal delay={breadcrumb ? 0.05 : 0}>
           <Badge content={badgeContent} />
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <h1 className="font-bold leading-[1.05] tracking-tight whitespace-pre-line">
+        <Reveal delay={breadcrumb ? 0.15 : 0.1}>
+          <h1
+            className={`font-bold leading-[1.05] tracking-tight whitespace-pre-line break-words${titleClassName ? ` ${titleClassName}` : ""}`}
+          >
             {title}
           </h1>
         </Reveal>
 
         {description && (
-          <Reveal delay={0.2}>
+          <Reveal delay={breadcrumb ? 0.25 : 0.2}>
             <p className="text-white/60 max-w-base leading-relaxed">
               {description}
             </p>
@@ -80,11 +94,19 @@ export default function Hero({
         )}
 
         {primaryHref && primaryContent && (
-          <Reveal delay={0.3}>
+          <Reveal delay={breadcrumb ? 0.35 : 0.3}>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Button content={primaryContent} href={primaryHref} style="primary" />
+              <Button
+                content={primaryContent}
+                href={primaryHref}
+                style="primary"
+              />
               {secondaryHref && secondaryContent && (
-                <Button content={secondaryContent} href={secondaryHref} style="secondary" />
+                <Button
+                  content={secondaryContent}
+                  href={secondaryHref}
+                  style="secondary"
+                />
               )}
             </div>
           </Reveal>
