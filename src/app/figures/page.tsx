@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Hero from "@/src/components/sections/Hero";
 import FigureTimeline from "@/src/components/sections/FigureTimeline";
 import Reveal from "@/src/components/animations/Reveal";

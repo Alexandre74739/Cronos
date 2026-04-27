@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/les-sabines.png";
 import { prisma } from "@/src/lib/prisma";
