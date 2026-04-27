@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Card from "../ui/Card";
 import ArrowButton from "../ui/ArrowButton";
+import SliceIn from "../animations/SliceIn";
 
 interface Source {
   slug: string;
@@ -80,21 +81,23 @@ export default function EpochCarousel({
           onScroll={checkScroll}
           className="scroll-hide flex gap-3 md:gap-4 overflow-x-auto snap-x snap-mandatory cursor-grab active:cursor-grabbing"
         >
-          {sources.map((source) => (
+          {sources.map((source, i) => (
             <div
               key={source.slug}
               className="flex-none snap-start
-                         w-[calc(50%-6px)] 
-                         md:w-[calc(33.33%-11px)] 
+                         w-[calc(50%-6px)]
+                         md:w-[calc(33.33%-11px)]
                          lg:w-[calc(25%-12px)]"
             >
-              <Card
-                href={`/sources/${source.slug}`}
-                year={source.year}
-                title={source.title}
-                description={source.description}
-                color={source.color}
-              />
+              <SliceIn delay={i * 0.05} once={false}>
+                <Card
+                  href={`/sources/${source.slug}`}
+                  year={source.year}
+                  title={source.title}
+                  description={source.description}
+                  color={source.color}
+                />
+              </SliceIn>
             </div>
           ))}
         </div>
