@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/radeau-de-la-meduse.png";
 import HistoryBtns from "@/src/components/sections/HistoryBtns";
