@@ -8,7 +8,7 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
-export default function PWAInstallButton() {
+export default function PWAInstallButton({ iconOnly = false }: { iconOnly?: boolean }) {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [isIOS, setIsIOS] = useState(false)
   const [showIOSInstructions, setShowIOSInstructions] = useState(false)
@@ -50,10 +50,18 @@ export default function PWAInstallButton() {
     <div className="relative">
       <button
         onClick={handleInstallClick}
-        className="font-ui text-sm font-bold text-border bg-secondary px-6 py-2 rounded-sm transition-all duration-300 hover:bg-gray-300"
+        aria-label="Télécharger l'app"
+        className={
+          iconOnly
+            ? "bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors duration-200"
+            : "font-ui text-sm font-bold text-border bg-secondary px-6 py-2 rounded-sm transition-all duration-300 hover:bg-gray-300"
+        }
       >
-        Télécharger l'App
-        <Download className="inline-block ml-2 size-4 text-black" />
+        {iconOnly ? (
+          <Download size={20} />
+        ) : (
+          <>Télécharger l'App <Download className="inline-block ml-2 size-4 text-black" /></>
+        )}
       </button>
 
       {showIOSInstructions && isIOS && (

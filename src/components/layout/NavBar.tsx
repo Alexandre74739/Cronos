@@ -5,6 +5,7 @@ import Image from "next/image";
 import Logo from "@/public/logo-site.svg";
 import Link from "next/link";
 import PWAInstallButton from "./PWAInstallButton";
+import { Users } from "@deemlol/next-icons";
 
 const links = [
   { href: "/", label: "Frise" },
@@ -71,27 +72,37 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Burger mobile */}
-      <button
-        className="flex lg:hidden flex-col justify-between w-6 h-4 bg-transparent border-0 p-0 shrink-0"
-        onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu"
-      >
-        <span
-          aria-hidden="true"
-          className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 origin-center ${isOpen ? "translate-y-[6.5px] rotate-45" : ""}`}
-        />
-        <span
-          aria-hidden="true"
-          className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 ${isOpen ? "opacity-0 scale-x-0" : ""}`}
-        />
-        <span
-          aria-hidden="true"
-          className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 origin-center ${isOpen ? "-translate-y-[6.5px] -rotate-45" : ""}`}
-        />
-      </button>
+      <div className="flex lg:hidden items-center gap-5">
+        <PWAInstallButton iconOnly />
+        <Link
+          href="/compte"
+          aria-label="Mon compte"
+          className="bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center"
+        >
+          <Users size={20} />
+        </Link>
+
+        <button
+          className="flex flex-col justify-between w-6 h-4 bg-transparent border-0 p-0 shrink-0"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
+          <span
+            aria-hidden="true"
+            className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 origin-center ${isOpen ? "translate-y-[6.5px] rotate-45" : ""}`}
+          />
+          <span
+            aria-hidden="true"
+            className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 ${isOpen ? "opacity-0 scale-x-0" : ""}`}
+          />
+          <span
+            aria-hidden="true"
+            className={`block w-full h-0.5 bg-white rounded-sm transition-all duration-200 origin-center ${isOpen ? "-translate-y-[6.5px] -rotate-45" : ""}`}
+          />
+        </button>
+      </div>
 
       <ul
         id="mobile-menu"
