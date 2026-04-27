@@ -54,7 +54,7 @@ export default function EpochCarousel({
   if (sources.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-6 py-10 bg-[#0d0804] overflow-hidden">
+    <div className="flex flex-col gap-4 py-4 overflow-hidden">
       <h3
         className="px-6 md:px-12 lg:px-20 text-2xl font-bold tracking-tight"
         style={{ color }}

@@ -25,7 +25,7 @@ export default function Card({ href, year, title, description, color = "#FA481C"
             </div>
 
             <div className="flex flex-col gap-2 p-4 bg-card flex-1">
-                <h3 className="text-white font-bold text-base leading-snug line-clamp-2 wrap-break-word group-hover:text-white/80 transition-colors duration-200">
+                <h3 className="text-white font-bold text-base leading-snug line-clamp-1 wrap-break-word group-hover:text-white/80 transition-colors duration-200">
                     {title}
                 </h3>
                 <p className="text-white/50 text-sm leading-relaxed line-clamp-2">
