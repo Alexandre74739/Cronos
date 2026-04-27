@@ -1,5 +1,6 @@
 import Hero from "@/src/components/sections/Hero";
 import Img from "@/src/app/assets/guernica.png";
+import Analyses from "@/src/components/sections/Analyses";
 
 export default function Figures() {
   return (
@@ -14,6 +15,7 @@ export default function Figures() {
         secondaryHref="/"
         secondaryContent="+ Créer mon parcours"
       />
+      <Analyses />
     </main>
   );
 }
