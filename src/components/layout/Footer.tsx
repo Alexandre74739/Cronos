@@ -42,7 +42,7 @@ export default function Footer() {
           <Link
             key={href}
             href={href}
-            className="font-ui text-white/50 hover:text-white transition-colors duration-200"
+            className="font-ui text-white/50 hover:text-white transition-colors duration-300"
           >
             {label}
           </Link>

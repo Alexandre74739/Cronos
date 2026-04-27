@@ -64,10 +64,11 @@ export default function Navbar() {
         </button>
 
         <PWAInstallButton />
-
-        <button className="font-ui text-xs font-bold text-white border border-white rounded-sm px-6 py-2.5 transition-all duration-300 hover:bg-white/10">
-          Créer un compte
-        </button>
+        <Link href="/compte">
+          <button className="font-ui text-xs font-bold text-white border border-white rounded-sm px-6 py-2.5 transition-all duration-300 hover:bg-white/10">
+            Créer un compte
+          </button>
+        </Link>
       </div>
 
       {/* Burger mobile */}
