@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Card from "../ui/Card";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
-import SliceIn from "../animations/SliceIn";
 import Reveal from "../animations/Reveal";
 import EpochCarousel from "./EpochCarousel";
 
@@ -56,31 +54,27 @@ export default function ArchivesSection({ sources }: { sources: Source[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
 
-  const isFiltering = query.trim() !== "" || category !== "";
-
-  const filtered = useMemo(() => {
+  const byEpoch = useMemo(() => {
     const q = query.toLowerCase().trim();
     const allowed = category ? CATEGORIES[category] : null;
-    return sources.filter((s) => {
-      const matchesCategory = !allowed || allowed.includes(s.nature);
-      const matchesQuery =
-        !q ||
-        s.title.toLowerCase().includes(q) ||
-        s.author.toLowerCase().includes(q) ||
-        s.description.toLowerCase().includes(q);
-      return matchesCategory && matchesQuery;
-    });
-  }, [query, category, sources]);
 
-  const byEpoch = useMemo(
-    () =>
-      EPOCHS.map(({ name, color }) => ({
-        name,
-        color,
-        sources: sources.filter((s) => COLOR_TO_EPOCH[s.color] === name),
-      })).filter((e) => e.sources.length > 0),
-    [sources]
-  );
+    return EPOCHS.map(({ name, color }) => ({
+      name,
+      color,
+      sources: sources.filter((s) => {
+        if (COLOR_TO_EPOCH[s.color] !== name) return false;
+        if (allowed && !allowed.includes(s.nature)) return false;
+        if (
+          q &&
+          !s.title.toLowerCase().includes(q) &&
+          !s.author.toLowerCase().includes(q) &&
+          !s.description.toLowerCase().includes(q)
+        )
+          return false;
+        return true;
+      }),
+    })).filter((e) => e.sources.length > 0);
+  }, [sources, query, category]);
 
   return (
     <section id="archives" className="py-24 flex flex-col gap-12">
@@ -113,26 +107,8 @@ export default function ArchivesSection({ sources }: { sources: Source[] }) {
         </Reveal>
       </div>
 
-      {isFiltering ? (
-        filtered.length === 0 ? (
-          <p className="text-white/30 text-sm px-12 md:px-20">
-            Aucun résultat.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-12 md:px-20">
-            {filtered.map((source, i) => (
-              <SliceIn key={source.slug} delay={i * 0.06}>
-                <Card
-                  href={`/sources/${source.slug}`}
-                  year={source.year}
-                  title={source.title}
-                  description={source.description}
-                  color={source.color}
-                />
-              </SliceIn>
-            ))}
-          </div>
-        )
+      {byEpoch.length === 0 ? (
+        <p className="text-white/30 text-lg text-center px-12 md:px-20">Aucun résultat...</p>
       ) : (
         <div className="flex flex-col gap-12">
           {byEpoch.map(({ name, color, sources: epochSources }) => (
