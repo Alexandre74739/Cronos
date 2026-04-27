@@ -53,3 +53,11 @@
 .delay-4 { animation-delay: 480ms; }
 .delay-5 { animation-delay: 600ms; }
 .delay-6 { animation-delay: 720ms; }
+
+.scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
