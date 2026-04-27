@@ -27,7 +27,7 @@ export default async function FiguresPage() {
         description="Penseurs, guerriers ou visionnaires : explorez la vie de ceux qui ont redéfini le monde. Découvrez comment leurs actions ont déclenché des révolutions, inspiré des mouvements et laissé une empreinte indélébile sur l'histoire."
         primaryHref="#figures"
         primaryContent="▼ Explorer les figures"
-        secondaryHref="/"
+        secondaryHref="/compte"
         secondaryContent="+ Créer mon parcours"
       />
 

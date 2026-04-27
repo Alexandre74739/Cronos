@@ -27,7 +27,7 @@ export default async function SourcesPage() {
         description="Analysez les manuscrits, les objets et les œuvres d'art. Apprenez à décrypter le passé à travers ses traces les plus authentiques. Explorez, questionnez, découvrez : les archives n'auront plus de secrets pour vous."
         primaryHref="#archives"
         primaryContent="▼ Explorer les archives"
-        secondaryHref="/"
+        secondaryHref="/compte"
         secondaryContent="+ Créer mon parcours"
       />
       <Analyses />

@@ -26,15 +26,15 @@ export default async function Periodes() {
         badgeContent="Traversez les siècles"
         title={"Voyager  \n dans les siècles"}
         description="Parcourez les époques, de l'Antiquité à nos jours. Identifiez les ruptures et les continuités qui ont construit notre civilisation. Explorez les grandes périodes historiques, leurs caractéristiques et leurs impacts sur le monde contemporain."
-        primaryHref="/"
-        primaryContent="▶ Commencer l'exploration"
-        secondaryHref="/"
+        primaryHref="#epochs"
+        primaryContent="▼ Commencer l'exploration"
+        secondaryHref="/compte"
         secondaryContent="+ Créer mon parcours"
       />
 
-      <section className="px-6 sm:px-12 md:px-20 py-20">
+      <section id="epochs" className="px-6 sm:px-12 md:px-20 py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {epochs.map((epoch: typeof epochs[number], i: number) => {
+          {epochs.map((epoch: (typeof epochs)[number], i: number) => {
             const color = getEpochColor(epoch.slug);
             const bounds = getEpochBoundaries(epoch.slug);
             const yearLabel = bounds

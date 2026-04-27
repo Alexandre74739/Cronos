@@ -19,12 +19,14 @@ export default async function Home() {
           clés, les personnages marquants et les mouvements qui ont façonné
           notre monde. Découvrez comment l'histoire continue de résonner
           aujourd'hui."
-        primaryHref="/"
-        primaryContent="▶ Commencer l'exploration"
-        secondaryHref="/"
+        primaryHref="#history"
+        primaryContent="▼ Commencer l'exploration"
+        secondaryHref="/compte"
         secondaryContent="+ Créer mon parcours"
       />
-      <HistoryBtns epochs={epochs} />
+      <section id="history">
+        <HistoryBtns epochs={epochs} />
+      </section>
     </main>
   );
 }
